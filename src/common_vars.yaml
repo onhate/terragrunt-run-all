@@ -1,0 +1,32 @@
+# general settings
+# you should change at least the namespace or name
+# to avoid S3 bucket naming conflicts
+namespace: "abc"
+name: "tg-run-all"
+environment: "ap-southeast-2" # change this to your region
+
+# Terraform configuration
+# must match the remote_state config in terragrunt.hcl
+terraform_state_bucket: "terraform-state"
+terraform_state_dynamodb_table: "TerraformStateLock"
+
+# Role that Terraform assumes to deploy resources
+terraform_deployment_role_name: "TerraformDeploymentRole"
+# Role that Terraform assumes to manage Terraform state
+terraform_administrator_role_name: "TerraformAdministratorRole"
+
+# The ID of the account where resources will be deployed
+deployment_account_id: "<your_account_id>"
+
+# notifications
+build_notification_email: "<your_build_notifications_email>"
+
+# CI/CD pipeline
+pipeline_name: "pipeline"
+source_artifact_name: "SourceArtifact"
+plan_artifact_name: "PlanArtifact"
+
+# configuration for automation
+default_environment:
+  TF_IN_AUTOMATION: 1
+  TF_INPUT: 0
